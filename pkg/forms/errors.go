@@ -1,0 +1,15 @@
+package forms
+
+type formErrors map[string][]string
+
+func (e formErrors) Add(field, message string) {
+	e[field] = append(e[field], message)
+}
+
+func (e formErrors) Get(field string) string {
+	eMsg := e[field]
+	if len(eMsg) == 0 {
+		return ""
+	}
+	return eMsg[0]
+}
